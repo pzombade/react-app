@@ -1,17 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { useState, createContext, useContext } from "react";
+import ReactDOM from "react-dom/client";
+import Component2 from "./components/users/comp2";
+
+export const UserContext = createContext();
+export const ColorContext = createContext();
+
+function Component1() {
+    const [user, setUser] = useState("Jesse Hall");
+    const [color, setColor] = useState('yellow');
+
+
+    return (
+        <ColorContext.Provider value={[color, setColor]}>
+            <UserContext.Provider value={user}>
+                <h1>{`Hello ${user}!`}</h1>
+                <Component2 />
+            </UserContext.Provider>
+
+        </ColorContext.Provider>
+    );
+}
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(<Component1 />);
