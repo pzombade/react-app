@@ -6,7 +6,7 @@ export const UserContext = createContext();
 export const ColorContext = createContext();
 
 function Component1() {
-    const [user, setUser] = useState("Jesse Hall");
+    const [user, setUser] = useState("Prashant Zombade");
     const [color, setColor] = useState('yellow');
 
 
